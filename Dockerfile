@@ -9,6 +9,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 ARG PROJECT
 WORKDIR /src 
 COPY $PROJECT $PROJECT
+COPY Habitat.DataAccess Habitat.DataAccess
 RUN dotnet restore $PROJECT/$PROJECT.csproj \
 && dotnet restore $PROJECT/$PROJECT.csproj \
 && dotnet build $PROJECT/$PROJECT.csproj -c Release -o /app
