@@ -1,0 +1,65 @@
+version: "3.5"
+
+services:
+  habitat-api:
+    build: .
+    networks:
+      - habitat-local
+    labels:
+      - traefik.frontend.rule=Host:api.localhost
+      - traefik.enable=true
+      - traefik.port=5002
+
+  postgres:
+    image: postgres
+    networks:
+      - habitat-local
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass
+    networks:
+      - habitat-local
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    networks:
+      - habitat-local
+    environment:
+      PGADMIN_DEFAULT_EMAIL: habitat@fake.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    networks:
+      - habitat-local
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    labels:
+      - traefik.frontend.rule=Host:pg.localhost
+      - traefik.enable=true
+      - traefik.port=80
+
+  traefik:
+      container_name: traefik
+      image: traefik:v1.7
+      environment:
+        - TRAEFIK_PING=true
+      networks:
+        - habitat-local
+      ports:
+        - 80:80
+        - 8080:8080
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./traefik.toml:/traefik.toml
+      labels:
+        - traefik.frontend.rule=Host:traefik.localhost
+        - traefik.enable=true
+        - traefik.port=8080
+        - traefik.tags=habitat-local
+        - traefik.docker.network=habitat-local
+
+networks:
+  habitat-local:
+    external: true
