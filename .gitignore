@@ -181,6 +181,8 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
+.DS_Store
+
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 
