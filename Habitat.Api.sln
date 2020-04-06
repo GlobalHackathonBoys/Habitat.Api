@@ -2,6 +2,15 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Habitat.Api", "Habitat.Api\Habitat.Api.csproj", "{14E2A1DC-8A20-4314-A92C-02F06598EE68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Habitat.DataAccess", "Habitat.DataAccess\Habitat.DataAccess.csproj", "{F5760B92-CAE9-4921-A4A0-8FBB9A2570FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{381D4BD2-E662-4A08-80DF-C813A6F15245}"
+ProjectSection(SolutionItems) = preProject
+	.gitignore = .gitignore
+	docker-compose-local.yml = docker-compose-local.yml
+	Dockerfile = Dockerfile
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +21,9 @@ Global
 		{14E2A1DC-8A20-4314-A92C-02F06598EE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14E2A1DC-8A20-4314-A92C-02F06598EE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14E2A1DC-8A20-4314-A92C-02F06598EE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5760B92-CAE9-4921-A4A0-8FBB9A2570FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5760B92-CAE9-4921-A4A0-8FBB9A2570FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5760B92-CAE9-4921-A4A0-8FBB9A2570FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5760B92-CAE9-4921-A4A0-8FBB9A2570FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
