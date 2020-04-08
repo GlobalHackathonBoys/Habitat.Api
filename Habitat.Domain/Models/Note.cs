@@ -1,6 +1,7 @@
 using System;
+using Habitat.Domain.Interfaces;
 
-namespace Habitat.DataAccess.Models
+namespace Habitat.Domain.Models
 {
     public class Note : IDataEntity, ICalendarItem
     {

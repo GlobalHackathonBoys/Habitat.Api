@@ -1,6 +1,6 @@
 using System;
 
-namespace Habitat.DataAccess.Models
+namespace Habitat.Domain.Interfaces
 {
     public interface IDataEntity
     {

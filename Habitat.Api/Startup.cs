@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Habitat.Application.Interfaces;
 using Habitat.DataAccess;
+using Habitat.DataAccess.Interfaces;
+using Habitat.DataAccess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +35,11 @@ namespace Habitat.Api
             
             services.AddDbContext<HabitatContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("HabitatDb")));
+
+            services.AddSingleton<IHabitatContext, HabitatContext>();
+
+            services.AddScoped<INoteRepository, NoteRepository>();
+            
             
             services.AddSwaggerGen(c =>
             {

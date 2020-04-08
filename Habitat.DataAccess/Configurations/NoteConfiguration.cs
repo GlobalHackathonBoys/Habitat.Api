@@ -1,4 +1,4 @@
-using Habitat.DataAccess.Models;
+using Habitat.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

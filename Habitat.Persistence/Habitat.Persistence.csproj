@@ -1,22 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.1" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Habitat.Application\Habitat.Application.csproj" />
       <ProjectReference Include="..\Habitat.DataAccess\Habitat.DataAccess.csproj" />
-      <ProjectReference Include="..\Habitat.Persistence\Habitat.Persistence.csproj" />
+      <ProjectReference Include="..\Habitat.Domain\Habitat.Domain.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
 
 </Project>
