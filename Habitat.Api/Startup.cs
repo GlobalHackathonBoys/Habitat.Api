@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Habitat.Application.Interfaces;
+using Habitat.Application.Notes.Queries;
 using Habitat.DataAccess;
 using Habitat.DataAccess.Interfaces;
 using Habitat.DataAccess.Repositories;
@@ -39,7 +40,7 @@ namespace Habitat.Api
             services.AddSingleton<IHabitatContext, HabitatContext>();
 
             services.AddScoped<INoteRepository, NoteRepository>();
-            
+            services.AddScoped<IGetAllNotesQuery, GetAllNotesQuery>();
             
             services.AddSwaggerGen(c =>
             {
