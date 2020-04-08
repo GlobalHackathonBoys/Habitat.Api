@@ -9,6 +9,7 @@ ProjectSection(SolutionItems) = preProject
 	.gitignore = .gitignore
 	docker-compose-local.yml = docker-compose-local.yml
 	Dockerfile = Dockerfile
+	README.md = README.md
 EndProjectSection
 EndProject
 Global
