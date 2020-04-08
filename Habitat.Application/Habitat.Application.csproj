@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Habitat.Common\Habitat.Common.csproj" />
       <ProjectReference Include="..\Habitat.Domain\Habitat.Domain.csproj" />
     </ItemGroup>
 

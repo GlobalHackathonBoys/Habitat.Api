@@ -10,8 +10,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Habitat.Application\Habitat.Application.csproj" />
+      <ProjectReference Include="..\Habitat.Common\Habitat.Common.csproj" />
       <ProjectReference Include="..\Habitat.DataAccess\Habitat.DataAccess.csproj" />
-      <ProjectReference Include="..\Habitat.Persistence\Habitat.Persistence.csproj" />
     </ItemGroup>
 
     <ItemGroup>
