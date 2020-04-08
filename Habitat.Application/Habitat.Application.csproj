@@ -9,4 +9,8 @@
       <ProjectReference Include="..\Habitat.Domain\Habitat.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Notes\Commands" />
+    </ItemGroup>
+
 </Project>
