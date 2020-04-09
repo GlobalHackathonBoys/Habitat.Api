@@ -44,6 +44,7 @@ namespace Habitat.Api
             services.AddScoped<IGetAllNotesQuery, GetAllNotesQuery>();
             services.AddScoped<IAddNotesCommand, AddNotesCommand>();
             services.AddScoped<IUpdateNotesCommand, UpdateNotesCommand>();
+            services.AddScoped<IGetTodaysNotesQuery, GetTodaysNotesQuery>();
             
             services.AddSwaggerGen(c =>
             {

@@ -21,20 +21,24 @@ namespace Habitat.Application.Notes.Commands
         
         public async Task<UpdateNotesResponse> ExecuteAsync(UpdateNotesModel request, CancellationToken cancellationToken = default)
         {
+            _logger.LogInformation($"{nameof(UpdateNotesCommand)}.{nameof(ExecuteAsync)} hit");
             await using var transaction = await _noteRepository.BeginTransactionAsync(cancellationToken);
 
             try
             {
+                _logger.LogInformation("Getting existing notes");
                 var existingNotes = _noteRepository.Get(request.Notes.Select(note => note.Id));
                 
+                _logger.LogInformation("Updating notes");
                 foreach (var note in request.Notes)
                 {
                     var noteToUpdate = existingNotes.FirstOrDefault(n => n.Id == note.Id);
 
                     if (noteToUpdate == null)
                     {
+                        _logger.LogWarning($"Note with id: {note.Id} does not exist. rolling back update");
                         await transaction.RollbackAsync(cancellationToken);
-                        
+                        _logger.LogInformation("update rolled back");
                         return new UpdateNotesResponse
                         {
                             Success = false,
@@ -60,6 +64,7 @@ namespace Habitat.Application.Notes.Commands
                 };
             }
             
+            _logger.LogInformation("Finished updating notes");
             return new UpdateNotesResponse
             {
                 Success = true,

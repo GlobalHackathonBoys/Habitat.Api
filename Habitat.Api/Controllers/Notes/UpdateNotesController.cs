@@ -23,8 +23,9 @@ namespace Habitat.Api.Controllers.Notes
         }
 
         [HttpPut]
-        public async Task<IActionResult> Post([FromBody] UpdateNotesModel request, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> Put([FromBody] UpdateNotesModel request, CancellationToken cancellationToken = default)
         {
+            _logger.LogTrace($"{nameof(UpdateNotesController)}.{nameof(Put)} hit");
             var errors = request.Validate();
 
             if (errors.Any())
