@@ -48,7 +48,14 @@ namespace Habitat.DataAccess.Repositories
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             _logger.LogTrace($"Saving {typeof(T).Name} entities");
+            
             return await _database.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<ITransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            var transaction = await _database.BeginTransactionAsync(cancellationToken);
+            return new TransactionWrapper(transaction);
         }
     }
 }

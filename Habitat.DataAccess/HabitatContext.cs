@@ -1,9 +1,12 @@
+using System.Threading;
+using System.Threading.Tasks;
 using Habitat.Application.Interfaces;
 using Habitat.DataAccess.Configurations;
 using Habitat.DataAccess.Interfaces;
 using Habitat.Domain.Interfaces;
 using Habitat.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Habitat.DataAccess
 {
@@ -24,6 +27,11 @@ namespace Habitat.DataAccess
         public DbSet<T> DataEntitySet<T>() where T : class, IDataEntity
         {
             return base.Set<T>();
+        }
+
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            return await Database.BeginTransactionAsync(cancellationToken);
         }
     }
 }

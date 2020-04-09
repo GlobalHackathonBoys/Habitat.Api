@@ -11,19 +11,19 @@ namespace Habitat.Api.Controllers.Notes
     [Produces("application/json")]
     [ApiController]
     [Route("notes")]
-    public class AddNotesController : ControllerBase
+    public class UpdateNotesController : ControllerBase
     {
-        private readonly IAddNotesCommand _command;
-        private readonly ILogger<AddNotesController> _logger;
+        private readonly IUpdateNotesCommand _command;
+        private readonly ILogger<UpdateNotesController> _logger;
 
-        public AddNotesController(IAddNotesCommand command, ILogger<AddNotesController> logger)
+        public UpdateNotesController(IUpdateNotesCommand command, ILogger<UpdateNotesController> logger)
         {
             _command = command;
             _logger = logger;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] AddNotesModel request, CancellationToken cancellationToken = default)
+        [HttpPut]
+        public async Task<IActionResult> Post([FromBody] UpdateNotesModel request, CancellationToken cancellationToken = default)
         {
             var errors = request.Validate();
 

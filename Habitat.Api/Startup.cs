@@ -18,7 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-
+[assembly: ApiConventionType(typeof(DefaultApiConventions))]
 namespace Habitat.Api
 {
     public class Startup
@@ -43,6 +43,7 @@ namespace Habitat.Api
             services.AddScoped<INoteRepository, NoteRepository>();
             services.AddScoped<IGetAllNotesQuery, GetAllNotesQuery>();
             services.AddScoped<IAddNotesCommand, AddNotesCommand>();
+            services.AddScoped<IUpdateNotesCommand, UpdateNotesCommand>();
             
             services.AddSwaggerGen(c =>
             {

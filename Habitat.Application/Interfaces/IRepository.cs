@@ -18,5 +18,7 @@ namespace Habitat.Application.Interfaces
         void Remove(IEnumerable<T> entities);
         
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
+        Task<ITransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
     }
 }
