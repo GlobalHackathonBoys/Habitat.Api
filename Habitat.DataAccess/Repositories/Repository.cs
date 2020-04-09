@@ -33,10 +33,10 @@ namespace Habitat.DataAccess.Repositories
             return _database.DataEntitySet<T>().Where(entity => ids.Contains(entity.Id));
         }
 
-        public async Task Add(IEnumerable<T> entities)
+        public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default)
         {
             _logger.LogTrace($"Adding {typeof(T).Name} entities");
-            await _database.DataEntitySet<T>().AddRangeAsync(entities);
+            await _database.DataEntitySet<T>().AddRangeAsync(entities, cancellationToken);
         }
 
         public void Remove(IEnumerable<T> entities)

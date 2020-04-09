@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Habitat.Application.Interfaces;
+using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Queries;
 using Habitat.DataAccess;
 using Habitat.DataAccess.Interfaces;
@@ -37,10 +38,11 @@ namespace Habitat.Api
             services.AddDbContext<HabitatContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("HabitatDb")));
 
-            services.AddSingleton<IHabitatContext, HabitatContext>();
+            services.AddTransient<IHabitatContext, HabitatContext>();
 
             services.AddScoped<INoteRepository, NoteRepository>();
             services.AddScoped<IGetAllNotesQuery, GetAllNotesQuery>();
+            services.AddScoped<IAddNotesCommand, AddNotesCommand>();
             
             services.AddSwaggerGen(c =>
             {

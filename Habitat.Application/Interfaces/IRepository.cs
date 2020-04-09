@@ -13,7 +13,7 @@ namespace Habitat.Application.Interfaces
 
         IQueryable<T> Get(IEnumerable<Guid> ids);
 
-        Task Add(IEnumerable<T> entities);
+        Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default);
 
         void Remove(IEnumerable<T> entities);
         
