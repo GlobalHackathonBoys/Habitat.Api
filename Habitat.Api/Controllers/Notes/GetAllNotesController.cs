@@ -4,7 +4,7 @@ using Habitat.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Habitat.Api.Controllers
+namespace Habitat.Api.Controllers.Notes
 {
     [Produces("application/json")]
     [ApiController]
