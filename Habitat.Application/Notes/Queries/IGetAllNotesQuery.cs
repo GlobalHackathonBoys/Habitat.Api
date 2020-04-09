@@ -6,6 +6,5 @@ namespace Habitat.Application.Notes.Queries
 {
     public interface IGetAllNotesQuery : IQuery<IEnumerable<Note>>
     {
-        
     }
 }

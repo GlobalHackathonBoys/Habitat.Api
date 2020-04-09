@@ -1,6 +1,11 @@
+using System.Collections.Generic;
+using Habitat.Application.Interfaces;
+using Habitat.Application.Notes.Commands.Models;
+using Habitat.Domain.Models;
+
 namespace Habitat.Application.Notes.Queries
 {
-    public interface IGetTodaysNotesQuery
+    public interface IGetTodaysNotesQuery : IQuery<GetTodaysNotesModel, IEnumerable<Note>>
     {
         
     }
