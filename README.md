@@ -6,7 +6,7 @@ API for the Habitat Hackathon Project
 
 ### Development 
 
-docker-compose -f docker-compose-local.yml up --build
+Use the run.sh or run.ps1 script to start the backend and needed services
 
 habitat api -> api.localhost
 pgadmin -> pg.localhost
