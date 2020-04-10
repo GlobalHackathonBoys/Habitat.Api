@@ -6,6 +6,7 @@ using Habitat.DataAccess.Interfaces;
 using Habitat.Domain.Interfaces;
 using Habitat.Domain.Models;
 using Habitat.Domain.Notes;
+using Habitat.Domain.Todos;
 using Habitat.Domain.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -24,10 +25,12 @@ namespace Habitat.DataAccess
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new NoteConfiguration());
+            modelBuilder.ApplyConfiguration(new TodoConfigruation());
         }
 
         public DbSet<Note> Notes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Todo> Todos { get; set; }
         
         public DbSet<T> DataEntitySet<T>() where T : class, IDataEntity
         {

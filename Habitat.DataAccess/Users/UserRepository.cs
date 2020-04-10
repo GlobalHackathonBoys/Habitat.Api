@@ -18,7 +18,7 @@ namespace Habitat.DataAccess.Users
 
         public override IQueryable<User> Get(IEnumerable<Guid> ids)
         {
-            return base.Get(ids).Include(i => i.Notes);
+            return base.Get(ids).Include(i => i.Notes).Include(i => i.Todos);
         }
     }
 }
