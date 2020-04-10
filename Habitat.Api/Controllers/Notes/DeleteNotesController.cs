@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Habitat.Api.Constants;
 using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Commands.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace Habitat.Api.Controllers.Notes
         }
 
         [HttpDelete]
-        [SwaggerOperation(Tags = new[] { "Notes" })]
+        [SwaggerOperation(Tags = new[] { SwaggerTags.Notes })]
         public async Task<IActionResult> Delete([FromBody] DeleteNotesModel request, CancellationToken cancellationToken = default)
         {
             _logger.LogTrace($"{nameof(DeleteNotesController)}.{nameof(Delete)} hit");

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Habitat.Api.Constants;
 using Habitat.Application.Notes.Commands.Models;
 using Habitat.Application.Notes.Queries;
 using Habitat.Domain.Models;
@@ -24,7 +25,7 @@ namespace Habitat.Api.Controllers.Notes
         }
         
         [HttpGet]
-        [SwaggerOperation(Tags = new[] { "Notes" })]
+        [SwaggerOperation(Tags = new[] { SwaggerTags.Notes })]
         public ActionResult Get([FromQuery] GetTodaysNotesModel request)
         {
             _logger.LogTrace($"{nameof(GetAllNotesController)}.{nameof(Get)} hit");

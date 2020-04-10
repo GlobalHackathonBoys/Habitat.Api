@@ -6,6 +6,8 @@ using Habitat.Application.Interfaces;
 using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Queries;
 using Habitat.Application.Users;
+using Habitat.Application.Users.Commands;
+using Habitat.Application.Users.Queries;
 using Habitat.DataAccess;
 using Habitat.DataAccess.Interfaces;
 using Habitat.DataAccess.Notes;
@@ -49,6 +51,8 @@ namespace Habitat.Api
             services.AddScoped<IAddNotesCommand, AddNotesCommand>();
             services.AddScoped<IUpdateNotesCommand, UpdateNotesCommand>();
             services.AddScoped<IDeleteNotesCommand, DeleteNotesCommand>();
+            services.AddScoped<IAddUsersCommand, AddUsersCommand>();
+            services.AddScoped<IGetUsersByUsernamesQuery, GetUsersByUsernamesQuery>();
             services.AddScoped<IGetTodaysNotesQuery, GetTodaysNotesQuery>();
             
             services.AddSwaggerGen(c =>
