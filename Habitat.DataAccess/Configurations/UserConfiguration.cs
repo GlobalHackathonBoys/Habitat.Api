@@ -10,7 +10,7 @@ namespace Habitat.DataAccess.Configurations
         {
             builder.HasKey(k => k.Id);
             
-            builder.Property(p => p.Id).HasColumnName("id");
+            builder.Property(p => p.Id).HasColumnName("id").ValueGeneratedOnAdd();
         }
     }
 }

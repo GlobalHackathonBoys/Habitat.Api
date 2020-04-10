@@ -14,7 +14,9 @@ namespace Habitat.Application.Notes.Queries
         private readonly INoteRepository _noteRepository;
         private readonly ILogger<GetTodaysNotesQuery> _logger;
 
-        public GetTodaysNotesQuery(INoteRepository noteRepository, ILogger<GetTodaysNotesQuery> logger)
+        public GetTodaysNotesQuery(
+            INoteRepository noteRepository,
+            ILogger<GetTodaysNotesQuery> logger)
         {
             _noteRepository = noteRepository;
             _logger = logger;
@@ -29,6 +31,7 @@ namespace Habitat.Application.Notes.Queries
             
             var notes = _noteRepository
                 .GetAll()
+                .Where(note => note.UserId == model.UserId)
                 .Where(note => (note.EventDateTime + offset).Date == nowInTimeZone)
                 .ToList();
             

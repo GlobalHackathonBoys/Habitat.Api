@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Habitat.Application.Interfaces;
 using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Queries;
+using Habitat.Application.Users;
 using Habitat.DataAccess;
 using Habitat.DataAccess.Interfaces;
 using Habitat.DataAccess.Notes;
 using Habitat.DataAccess.Repositories;
+using Habitat.DataAccess.Users;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -42,6 +44,7 @@ namespace Habitat.Api
             services.AddTransient<IHabitatContext, HabitatContext>();
 
             services.AddScoped<INoteRepository, NoteRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IGetAllNotesQuery, GetAllNotesQuery>();
             services.AddScoped<IAddNotesCommand, AddNotesCommand>();
             services.AddScoped<IUpdateNotesCommand, UpdateNotesCommand>();
