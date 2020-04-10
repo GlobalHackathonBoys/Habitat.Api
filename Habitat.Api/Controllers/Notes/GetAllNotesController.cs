@@ -10,7 +10,7 @@ namespace Habitat.Api.Controllers.Notes
     [Produces("application/json")]
     [ApiController]
     [Route("notes")]
-    public class GetAllNotesController
+    public class GetAllNotesController : ControllerBase
     {
         private readonly IGetAllNotesQuery _query;
         private readonly ILogger<GetAllNotesController> _logger;
@@ -22,10 +22,10 @@ namespace Habitat.Api.Controllers.Notes
         }
         
         [HttpGet]
-        public IEnumerable<Note> Get()
+        public IActionResult Get()
         {
             _logger.LogTrace($"{nameof(GetAllNotesController)}.{nameof(Get)} hit");
-            return _query.Execute();
+            return Ok(_query.Execute());
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Habitat.Application.Notes.Commands
             try
             {
                 _logger.LogInformation("Getting existing notes");
-                var existingNotes = _noteRepository.Get(request.Notes.Select(note => note.Id));
+                var existingNotes = _noteRepository.Get(request.Notes.Select(note => note.Id)).Where(note => note.UserId == request.UserId);
                 
                 _logger.LogInformation("Updating notes");
                 foreach (var note in request.Notes)

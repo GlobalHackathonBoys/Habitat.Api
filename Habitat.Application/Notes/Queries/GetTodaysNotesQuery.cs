@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Habitat.Application.Interfaces;
 using Habitat.Application.Notes.Commands.Models;
+using Habitat.Application.Notes.Queries.Models;
 using Habitat.Domain.Models;
 using Habitat.Domain.Notes;
 using Microsoft.Extensions.Logging;
@@ -22,9 +23,10 @@ namespace Habitat.Application.Notes.Queries
             _logger = logger;
         }
 
-        public IEnumerable<Note> Execute(GetTodaysNotesModel model)
+        public GetNotesResponseModel Execute(GetTodaysNotesModel model)
         {
             _logger.LogInformation("Getting today's notes");
+            
             var timeZone = TimeZoneInfo.FindSystemTimeZoneById(model.TimeZone);
             var offset = timeZone.BaseUtcOffset;
             var nowInTimeZone = (DateTime.UtcNow + offset).Date;
@@ -33,11 +35,22 @@ namespace Habitat.Application.Notes.Queries
                 .GetAll()
                 .Where(note => note.UserId == model.UserId)
                 .Where(note => (note.EventDateTime + offset).Date == nowInTimeZone)
+                .Select(note => new GetNoteResponseModel
+                {
+                    Id = note.Id,
+                    Text = note.NoteText,
+                    DateTime = note.EventDateTime
+                })
+                .OrderByDescending(note => note.DateTime)
                 .ToList();
             
             _logger.LogInformation("Retrieved today's notes");
             
-            return notes;
+            return new GetNotesResponseModel
+            {
+                UserId = model.UserId,
+                Notes = notes
+            };
         }
     }
 }
