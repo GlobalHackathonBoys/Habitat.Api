@@ -1,10 +1,12 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Habitat.Api.Constants;
 using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Commands.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Habitat.Api.Controllers.Notes
 {
@@ -23,6 +25,7 @@ namespace Habitat.Api.Controllers.Notes
         }
 
         [HttpPost]
+        [SwaggerOperation(Tags = new[] { SwaggerTags.Notes })]
         public async Task<IActionResult> Post([FromBody] AddNotesModel request, CancellationToken cancellationToken = default)
         {
             _logger.LogTrace($"{nameof(AddNotesController)}.{nameof(Post)} hit");

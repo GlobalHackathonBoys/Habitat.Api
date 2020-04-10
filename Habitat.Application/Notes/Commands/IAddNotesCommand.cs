@@ -5,7 +5,7 @@ using Habitat.Application.Notes.Commands.Models;
 
 namespace Habitat.Application.Notes.Commands
 {
-    public interface IAddNotesCommand : IAsyncCommand<AddNotesModel, List<Guid>>
+    public interface IAddNotesCommand : IAsyncCommand<AddNotesModel, AddNotesResponse>
     {
     }
 }

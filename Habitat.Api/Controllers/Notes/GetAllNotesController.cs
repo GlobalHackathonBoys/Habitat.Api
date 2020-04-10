@@ -1,15 +1,18 @@
 using System.Collections.Generic;
+using Habitat.Api.Constants;
 using Habitat.Application.Notes.Queries;
 using Habitat.Domain.Models;
+using Habitat.Domain.Notes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Habitat.Api.Controllers.Notes
 {
     [Produces("application/json")]
     [ApiController]
     [Route("notes")]
-    public class GetAllNotesController
+    public class GetAllNotesController : ControllerBase
     {
         private readonly IGetAllNotesQuery _query;
         private readonly ILogger<GetAllNotesController> _logger;
@@ -21,10 +24,11 @@ namespace Habitat.Api.Controllers.Notes
         }
         
         [HttpGet]
-        public IEnumerable<Note> Get()
+        [SwaggerOperation(Tags = new[] { SwaggerTags.Notes })]
+        public IActionResult Get()
         {
             _logger.LogTrace($"{nameof(GetAllNotesController)}.{nameof(Get)} hit");
-            return _query.Execute();
+            return Ok(_query.Execute());
         }
     }
 }

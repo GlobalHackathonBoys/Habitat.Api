@@ -11,6 +11,11 @@ namespace Habitat.Application.Notes.Commands.Models
         /// </summary>
         public string TimeZone { get; set; }
 
+        /// <summary>
+        /// Id of the User to get notes for
+        /// </summary>
+        public Guid UserId { get; set; }
+
         public List<string> Validate()
         {
             var errors = new List<string>();
@@ -28,6 +33,11 @@ namespace Habitat.Application.Notes.Commands.Models
             if (!validTimeZone)
             {
                 errors.Add("Invalid TimeZone");
+            }
+
+            if (UserId == Guid.Empty)
+            {
+                errors.Add("UserId Cannot be Empty");
             }
 
             return errors;

@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Habitat.Application.Interfaces;
 using Habitat.DataAccess.Interfaces;
 using Habitat.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Habitat.DataAccess.Repositories
@@ -21,25 +23,25 @@ namespace Habitat.DataAccess.Repositories
             _logger = logger;
         }
         
-        public IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll()
         {
             _logger.LogTrace($"Getting all {typeof(T).Name}");
             return _database.DataEntitySet<T>();
         }
 
-        public IQueryable<T> Get(IEnumerable<Guid> ids)
+        public virtual IQueryable<T> Get(IEnumerable<Guid> ids)
         {
             _logger.LogTrace($"Getting {typeof(T).Name} entities");
             return _database.DataEntitySet<T>().Where(entity => ids.Contains(entity.Id));
         }
 
-        public async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default)
+        public virtual async Task AddRangeAsync(IEnumerable<T> entities, CancellationToken cancellationToken = default)
         {
             _logger.LogTrace($"Adding {typeof(T).Name} entities");
             await _database.DataEntitySet<T>().AddRangeAsync(entities, cancellationToken);
         }
 
-        public void Remove(IEnumerable<T> entities)
+        public virtual void Remove(IEnumerable<T> entities)
         {
             _logger.LogTrace($"Removing {typeof(T).Name} entities");
             _database.DataEntitySet<T>().RemoveRange(entities);
