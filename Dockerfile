@@ -13,6 +13,7 @@ COPY $PROJECT.Application $PROJECT.Application
 COPY $PROJECT.Common $PROJECT.Common
 COPY $PROJECT.DataAccess $PROJECT.DataAccess
 COPY $PROJECT.Domain $PROJECT.Domain
+COPY $PROJECT.News $PROJECT.News
 
 RUN dotnet restore $PROJECT.Api/$PROJECT.Api.csproj \
 && dotnet restore $PROJECT.Api/$PROJECT.Api.csproj \

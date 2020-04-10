@@ -8,6 +8,7 @@ using Habitat.Application.Notes.Queries;
 using Habitat.DataAccess;
 using Habitat.DataAccess.Interfaces;
 using Habitat.DataAccess.Repositories;
+using Habitat.News;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,7 +19,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+
 [assembly: ApiConventionType(typeof(DefaultApiConventions))]
+
 namespace Habitat.Api
 {
     public class Startup
@@ -33,8 +36,11 @@ namespace Habitat.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+                options.AddPolicy(name: "AllowedCORS",
+                    builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             services.AddControllers();
-            
+
             services.AddDbContext<HabitatContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("HabitatDb")));
 
@@ -45,7 +51,8 @@ namespace Habitat.Api
             services.AddScoped<IAddNotesCommand, AddNotesCommand>();
             services.AddScoped<IUpdateNotesCommand, UpdateNotesCommand>();
             services.AddScoped<IGetTodaysNotesQuery, GetTodaysNotesQuery>();
-            
+            services.AddScoped<IHabitatNews, HabitatNews>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -69,10 +76,12 @@ namespace Habitat.Api
 
             app.UseRouting();
 
+            app.UseCors("AllowedCORS");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-            
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -83,6 +92,7 @@ namespace Habitat.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Habit@");
                 c.RoutePrefix = string.Empty;
             });
+
         }
     }
 }
