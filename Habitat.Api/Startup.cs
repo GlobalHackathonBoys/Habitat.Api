@@ -7,6 +7,7 @@ using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Queries;
 using Habitat.DataAccess;
 using Habitat.DataAccess.Interfaces;
+using Habitat.DataAccess.Notes;
 using Habitat.DataAccess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
