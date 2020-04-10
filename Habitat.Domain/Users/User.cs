@@ -6,6 +6,6 @@ namespace Habitat.Domain.Users
 {
     public class User : DataEntity
     {
-        public virtual ICollection<Note> Notes { get; set; }
+        public ICollection<Note> Notes { get; set; }
     }
 }
