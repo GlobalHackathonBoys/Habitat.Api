@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Aylien.NewsApi.Api;
 using Aylien.NewsApi.Client;
-using Aylien.NewsApi.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NewsAPI;
