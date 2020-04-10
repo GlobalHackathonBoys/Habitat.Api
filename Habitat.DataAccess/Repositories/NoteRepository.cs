@@ -1,6 +1,7 @@
 using Habitat.Application.Interfaces;
 using Habitat.DataAccess.Interfaces;
 using Habitat.Domain.Models;
+using Habitat.Domain.Notes;
 using Microsoft.Extensions.Logging;
 
 namespace Habitat.DataAccess.Repositories

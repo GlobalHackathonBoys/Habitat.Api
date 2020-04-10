@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Habitat.Application.Interfaces;
 using Habitat.Domain.Models;
+using Habitat.Domain.Notes;
 using Microsoft.Extensions.Logging;
 
 namespace Habitat.Application.Notes.Queries

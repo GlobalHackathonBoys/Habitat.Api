@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Habitat.Application.Notes.Commands.Models;
 using Habitat.Application.Notes.Queries;
 using Habitat.Domain.Models;
+using Habitat.Domain.Notes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 

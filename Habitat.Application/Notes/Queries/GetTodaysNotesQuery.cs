@@ -4,6 +4,7 @@ using System.Linq;
 using Habitat.Application.Interfaces;
 using Habitat.Application.Notes.Commands.Models;
 using Habitat.Domain.Models;
+using Habitat.Domain.Notes;
 using Microsoft.Extensions.Logging;
 
 namespace Habitat.Application.Notes.Queries
