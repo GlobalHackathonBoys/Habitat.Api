@@ -14,6 +14,7 @@ COPY $PROJECT.Common $PROJECT.Common
 COPY $PROJECT.DataAccess $PROJECT.DataAccess
 COPY $PROJECT.Domain $PROJECT.Domain
 COPY $PROJECT.News $PROJECT.News
+COPY $PROJECT.Images $PROJECT.Images
 
 RUN dotnet restore $PROJECT.Api/$PROJECT.Api.csproj \
 && dotnet restore $PROJECT.Api/$PROJECT.Api.csproj \

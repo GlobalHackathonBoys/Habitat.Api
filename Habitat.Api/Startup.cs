@@ -16,6 +16,7 @@ using Habitat.DataAccess.Notes;
 using Habitat.DataAccess.Repositories;
 using Habitat.DataAccess.Todos;
 using Habitat.DataAccess.Users;
+using Habitat.Images;
 using Habitat.News;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -65,6 +66,7 @@ namespace Habitat.Api
             services.AddScoped<IGetUsersByUsernamesQuery, GetUsersByUsernamesQuery>();
             services.AddScoped<IGetTodaysNotesQuery, GetTodaysNotesQuery>();
             services.AddScoped<IHabitatNews, HabitatNews>();
+            services.AddScoped<IImageSearch, ImageSearch>();
 
 
             services.AddScoped<ITodoRepository, TodoRepository>();
