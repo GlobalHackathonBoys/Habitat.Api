@@ -4,6 +4,7 @@ using Habitat.Domain.Models;
 using Habitat.Domain.Notes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Habitat.Api.Controllers.Notes
 {
@@ -22,6 +23,7 @@ namespace Habitat.Api.Controllers.Notes
         }
         
         [HttpGet]
+        [SwaggerOperation(Tags = new[] { "Notes" })]
         public IActionResult Get()
         {
             _logger.LogTrace($"{nameof(GetAllNotesController)}.{nameof(Get)} hit");

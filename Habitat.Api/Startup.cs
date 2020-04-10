@@ -48,6 +48,7 @@ namespace Habitat.Api
             services.AddScoped<IGetAllNotesQuery, GetAllNotesQuery>();
             services.AddScoped<IAddNotesCommand, AddNotesCommand>();
             services.AddScoped<IUpdateNotesCommand, UpdateNotesCommand>();
+            services.AddScoped<IDeleteNotesCommand, DeleteNotesCommand>();
             services.AddScoped<IGetTodaysNotesQuery, GetTodaysNotesQuery>();
             
             services.AddSwaggerGen(c =>
@@ -58,6 +59,7 @@ namespace Habitat.Api
                     Version = "v1",
                     Description = "API Backend for Habit@ Project for DevPost The Global Hack"
                 });
+                c.EnableAnnotations();
             });
         }
 

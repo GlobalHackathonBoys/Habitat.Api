@@ -5,6 +5,7 @@ using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Commands.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Habitat.Api.Controllers.Notes
 {
@@ -23,6 +24,7 @@ namespace Habitat.Api.Controllers.Notes
         }
 
         [HttpPut]
+        [SwaggerOperation(Tags = new[] { "Notes" })]
         public async Task<IActionResult> Put([FromBody] UpdateNotesModel request, CancellationToken cancellationToken = default)
         {
             _logger.LogTrace($"{nameof(UpdateNotesController)}.{nameof(Put)} hit");
