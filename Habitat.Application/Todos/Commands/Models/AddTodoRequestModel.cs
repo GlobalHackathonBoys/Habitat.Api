@@ -6,13 +6,8 @@ namespace Habitat.Application.Todos.Commands.Models
 {
     public class AddTodoRequestModel : IModelValidator
     {
-        public AddTodoRequestModel()
-        {
-            DateTime = DateTimeOffset.UtcNow;
-        }
-        
         public bool Done { get; set; }
-        public DateTimeOffset DateTime { get; set; }
+        public DateTimeOffset DateTime { get; set; } = DateTimeOffset.UtcNow;
         public string Text { get; set; }
         public List<string> Validate()
         {

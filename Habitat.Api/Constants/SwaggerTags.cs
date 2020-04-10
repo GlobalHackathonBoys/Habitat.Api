@@ -4,5 +4,6 @@ namespace Habitat.Api.Constants
     {
         public const string Notes = nameof(Notes);
         public const string Users = nameof(Users);
+        public const string Todos = nameof(Todos);
     }
 }

@@ -6,6 +6,7 @@ using Habitat.Application.Interfaces;
 using Habitat.Application.Notes.Commands;
 using Habitat.Application.Notes.Queries;
 using Habitat.Application.Todos;
+using Habitat.Application.Todos.Commands;
 using Habitat.Application.Users;
 using Habitat.Application.Users.Commands;
 using Habitat.Application.Users.Queries;
@@ -59,6 +60,7 @@ namespace Habitat.Api
             services.AddScoped<IGetTodaysNotesQuery, GetTodaysNotesQuery>();
 
             services.AddScoped<ITodoRepository, TodoRepository>();
+            services.AddScoped<IAddTodosCommand, AddTodosCommand>();
             
             services.AddSwaggerGen(c =>
             {
